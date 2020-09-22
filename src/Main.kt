@@ -85,6 +85,19 @@ fun main(args: Array<String>) {
         Animals.LION -> println(animal.toLowerCaseAndCapitalise())
         else -> println("Другое животное")
     }
+
+    //Изолированные классы
+    val db = SealedDb.MongoDb(111, "connection_url")
+
+    //возможно проверить создан ли объект на основе одного из родителей
+    if(db is SealedDb.MongoDb) {
+        db.getConnection()
+    }
+
+    //copy доступна только для изолированных классов
+    //происходит полное копирование, однако чать параметров возможно переопределять
+    val db_copy = db.copy(conn = "copy_connection_url")
+
 }
 
 
