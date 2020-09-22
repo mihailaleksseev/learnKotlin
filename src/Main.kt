@@ -66,10 +66,25 @@ fun main(args: Array<String>) {
     val userProvider = UserInfoProviderImpl()
     userProvider.printInfo(antony)
 
+    //Можно реализовать вложенный класс
+    val userInfo = object : UserInfo() {
+        override fun printInfo(user: User) {
+            super.printInfo(user)
+            println("Переопределение прямо во вложенном классе")
+        }
 
+        override val db: String
+            get() = "db переопределена во вложенном классе"
+    }
 
+    //Перечисления
+    var animal = Animals.BEAR
 
-
+    when(animal) {
+        Animals.CAT -> println(animal.toLowerCaseAndCapitalise())
+        Animals.LION -> println(animal.toLowerCaseAndCapitalise())
+        else -> println("Другое животное")
+    }
 }
 
 
