@@ -62,6 +62,10 @@ fun main(args: Array<String>) {
     val antony = User("Antony", "Leroi")
     antony.login = "Empty"
 
+    //Интерфейсы
+    val userProvider = UserInfoProviderImpl()
+    userProvider.printInfo(antony)
+
 
 
 
